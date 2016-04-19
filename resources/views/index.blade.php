@@ -13,7 +13,7 @@
 	<section class="filter-bar">
 		A filter has been set! <a href="{{route('index')}}">show all quotes</a>
 	</section>
-	
+
 	@endif
 	@if(count($errors) > 0)
 		<section class="info-box fail">
@@ -31,12 +31,12 @@
 	<section class="quotes">
 		<h1>Latest Quotes{{($author)? ' by '.$author->name:''}}</h1>
 		@for($i = 0; $i < count($quotes); $i++)
-		
-		
+
+
 		<article class="quote{{ $i % 3 === 0 ? ' first-in-line': ($i +1) % 3 ===0 ? ' last-in-line':'' }}">
 			<div class="delete"><a href="{{route('delete', ['quote_id' => $quotes[$i]->id])}}">X</a></div>
 			{{$quotes[$i]->quote}}
-			
+
 			<div class="info">
 				Created by <a href="{{route('author', ['author_id' => $quotes[$i]->author_id])}}">{{$quotes[$i]->author->name}}</a>
 				on {{$quotes[$i]->created_at}}
@@ -58,6 +58,10 @@
 			<div class="input-group">
 				<label for="author">Your Name</label>
 				<input type="text" name="author" id="author" placeholder="Your Name">
+			</div>
+			<div class="input-group">
+				<label for="email">Your E-mail</label>
+				<input type="text" name="email" id="email" placeholder="Your E-mail">
 			</div>
 			<div class="input-group">
 				<label for="quote">Your Quote</label>
